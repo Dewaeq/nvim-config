@@ -22,6 +22,8 @@ map("n", "K", vim.lsp.buf.hover)
 
 map("n", "<leader>df", vim.diagnostic.open_float, { desc = "show floating diagnostics" })
 
+map({ "n" }, "<leader>nr", "<cmd>set rnu!<CR>", { desc = "toggle relative line numbers" })
+
 map("n", "<leader>i", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle inlay hints" })

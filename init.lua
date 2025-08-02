@@ -30,8 +30,10 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
-require "nvchad.autocmds"
+require "autocmds"
 
 vim.schedule(function()
   require "mappings"
 end)
+
+require("telescope").load_extension "fzf"
