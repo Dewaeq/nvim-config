@@ -32,6 +32,15 @@ local options = {
 
   extensions_list = { "themes", "terms" },
   extensions = {},
+  ensure_installed = {
+    "vim",
+    "lua",
+    "vimdoc",
+    "html",
+    "css",
+    "c",
+    "cpp",
+  },
 }
 
 return options
