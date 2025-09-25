@@ -18,6 +18,21 @@ return {
     lazy = false, -- This plugin is already lazy
   },
 
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "cpp",
+        "c",
+      },
+    },
+  },
+
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
   {
