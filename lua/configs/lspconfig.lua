@@ -7,5 +7,6 @@ local servers = {
   "clangd",
   "cmake",
   "docker_language_server",
+  "lemminx",
 }
 vim.lsp.enable(servers)
