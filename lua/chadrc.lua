@@ -6,7 +6,8 @@
 local M = {}
 
 M.base46 = {
-  theme = "ayu_light",
+  theme = "ayu_dark",
+  theme_toggle = { "ayu_light", "ayu_dark" },
 
   -- hl_override = {
   -- 	Comment = { italic = true },
@@ -15,10 +16,10 @@ M.base46 = {
 }
 
 -- M.nvdash = { load_on_startup = true }
--- M.ui = {
---   tabufline = {
---     lazyload = false,
---   },
--- }
+M.ui = {
+  tabufline = {
+    lazyload = false,
+  },
+}
 
 return M

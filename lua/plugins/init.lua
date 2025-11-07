@@ -44,4 +44,29 @@ return {
       return require "configs.telescope"
     end,
   },
+  -- Lua
+  {
+    "f-person/auto-dark-mode.nvim",
+    lazy = false,
+    opts = {
+      set_light_mode = function()
+        local config = require "nvconfig"
+
+        if config.base46.theme ~= config.base46.theme_toggle[1] then
+          config.base46.theme = config.base46.theme_toggle[1]
+          require("base46").load_all_highlights()
+        end
+      end,
+      set_dark_mode = function()
+        local config = require "nvconfig"
+
+        if config.base46.theme ~= config.base46.theme_toggle[2] then
+          config.base46.theme = config.base46.theme_toggle[2]
+          require("base46").load_all_highlights()
+        end
+      end,
+      update_interval = 1000,
+      fallback = "dark",
+    },
+  },
 }
