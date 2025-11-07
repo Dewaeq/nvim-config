@@ -15,6 +15,20 @@ map("n", "<leader>df", vim.diagnostic.open_float, { desc = "show floating diagno
 
 map({ "n" }, "<leader>nr", "<cmd>set rnu!<CR>", { desc = "toggle relative line numbers" })
 
+map({ "n" }, "<leader>tt", function()
+  require("base46").toggle_theme()
+end, { desc = "toggle between light/dark theme" })
+
 map("n", "<leader>i", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle inlay hints" })
+
+vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "Vertical split", silent = true })
+vim.keymap.set("n", "<leader>h", "<cmd>split<cr>", { desc = "Horizontal split", silent = true })
+
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down", silent = true })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up", silent = true })
+vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { silent = true })
+vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { silent = true })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true })
