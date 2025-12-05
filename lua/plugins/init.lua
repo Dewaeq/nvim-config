@@ -70,5 +70,18 @@ return {
       update_interval = 1000,
       fallback = "dark",
     },
+    {
+      "kevinhwang91/nvim-ufo",
+      dependencies = { "kevinhwang91/promise-async" },
+      lazy = false,
+      config = function()
+        require("ufo").setup {
+          provider_selector = function(bufnr, filetype, buftype)
+            -- use treesitter with indent as fallback
+            return { "treesitter", "indent" }
+          end,
+        }
+      end,
+    },
   },
 }

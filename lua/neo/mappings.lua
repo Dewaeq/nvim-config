@@ -25,6 +25,7 @@ end, { desc = "Toggle inlay hints" })
 
 vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "Vertical split", silent = true })
 vim.keymap.set("n", "<leader>h", "<cmd>split<cr>", { desc = "Horizontal split", silent = true })
+vim.keymap.set("n", "<leader>s", "<cmd>on<cr>", { desc = "Close split", silent = true })
 
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down", silent = true })
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up", silent = true })
