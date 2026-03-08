@@ -1,5 +1,16 @@
 return {
   {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        -- "basedpyright",
+        "pyright",
+        "ruff",
+        "clangd",
+      },
+    },
+  },
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
@@ -51,6 +62,7 @@ return {
     opts = {
       set_light_mode = function()
         local config = require "nvconfig"
+        vim.api.nvim_set_option_value("background", "light", {})
 
         if config.base46.theme ~= config.base46.theme_toggle[1] then
           require("base46").toggle_theme()
@@ -60,6 +72,7 @@ return {
       end,
       set_dark_mode = function()
         local config = require "nvconfig"
+        vim.api.nvim_set_option_value("background", "dark", {})
 
         if config.base46.theme ~= config.base46.theme_toggle[2] then
           require("base46").toggle_theme()

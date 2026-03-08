@@ -2,11 +2,10 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
     rust = { "rustfmt", lsp_format = "prefer" },
-    python = { "black" },
+    python = { lsp_format = "prefer" },
     json = { "prettier" },
+    _ = { "prettier" },
     -- json = { "yq" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
   },
 
   format_on_save = {
