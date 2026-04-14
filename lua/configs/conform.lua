@@ -4,7 +4,7 @@ local options = {
     rust = { "rustfmt", lsp_format = "prefer" },
     python = { lsp_format = "prefer" },
     json = { "prettier" },
-    _ = { "prettier" },
+    -- _ = { "prettier" },
     -- json = { "yq" },
   },
 

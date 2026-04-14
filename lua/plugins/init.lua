@@ -11,6 +11,9 @@ return {
     },
   },
   {
+    "nvim-lua/plenary.nvim",
+  },
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
@@ -31,29 +34,23 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "python",
-        "html",
-        "css",
-        "cpp",
-        "c",
-      },
-    },
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate | TSInstallAll",
+    opts = require "configs.treesitter",
   },
 
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
     cmd = "Telescope",
-    opts = function()
-      return require "configs.telescope"
-    end,
+    opts = require "configs.telescope",
   },
   -- Lua
   {
@@ -83,18 +80,44 @@ return {
       update_interval = 1000,
       fallback = "dark",
     },
-    {
-      "kevinhwang91/nvim-ufo",
-      dependencies = { "kevinhwang91/promise-async" },
-      lazy = false,
-      config = function()
-        require("ufo").setup {
-          provider_selector = function(bufnr, filetype, buftype)
-            -- use treesitter with indent as fallback
-            return { "treesitter", "indent" }
-          end,
-        }
-      end,
+  },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    lazy = false,
+    config = function()
+      require("ufo").setup {
+        provider_selector = function(bufnr, filetype, buftype)
+          -- use treesitter with indent as fallback
+          return { "treesitter", "indent" }
+        end,
+      }
+    end,
+  },
+  {
+    "NeogitOrg/neogit",
+    lazy = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+
+      -- Only one of these is needed.
+      "sindrets/diffview.nvim", -- optional
+      "esmuellert/codediff.nvim", -- optional
+
+      -- Only one of these is needed.
+      "nvim-telescope/telescope.nvim", -- optional
+      -- "ibhagwan/fzf-lua", -- optional
+      "nvim-mini/mini.pick", -- optional
+      "folke/snacks.nvim", -- optional
+    },
+    cmd = "Neogit",
+    keys = {
+      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
     },
   },
+  -- {
+  -- "lewis6991/gitsigns.nvim",
+  -- event = { "BufReadPre", "BufNewFile" },
+  -- opts = require "configs.gitsigns",
+  -- },
 }
